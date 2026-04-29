@@ -1,2 +1,2 @@
 # Projet ÉVASION
-Structure HTML/CSS prête à compléter.
+Devoir HTML/CSS prête à compléter.
