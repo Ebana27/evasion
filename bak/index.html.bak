@@ -1,0 +1,1724 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evasion | Voyages Inoubliables</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================ */
+        /*              RESET & BASE                    */
+        /* ============================================ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue-900: #0c2340;
+            --blue-800: #0f2e52;
+            --blue-700: #153d6b;
+            --blue-600: #1a4f8b;
+            --blue-500: #1e6ab5;
+            --blue-400: #3b8dd4;
+            --blue-300: #6aade8;
+            --blue-200: #a3cff0;
+            --blue-100: #d6eafb;
+            --blue-50: #eef7fd;
+            --turquoise: #0891b2;
+            --turquoise-light: #22d3ee;
+            --sand: #fef3c7;
+            --sand-dark: #fbbf24;
+            --white: #ffffff;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --gray-900: #0f172a;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--gray-700);
+            background: var(--white);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul { list-style: none; }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ============================================ */
+        /*              ANIMATIONS                      */
+        /* ============================================ */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out both;
+        }
+
+        .animate-fade-up-delay-1 { animation-delay: 0.15s; }
+        .animate-fade-up-delay-2 { animation-delay: 0.3s; }
+        .animate-fade-up-delay-3 { animation-delay: 0.45s; }
+        .animate-fade-up-delay-4 { animation-delay: 0.6s; }
+        .animate-fade-up-delay-5 { animation-delay: 0.75s; }
+
+        /* ============================================ */
+        /*              NAVIGATION                      */
+        /* ============================================ */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+        }
+
+        nav {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .nav-logo {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            transition: var(--transition);
+        }
+
+        header.scrolled .nav-logo {
+            color: var(--blue-900);
+        }
+
+        .nav-logo span {
+            color: var(--turquoise-light);
+        }
+
+        header.scrolled .nav-logo span {
+            color: var(--turquoise);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a {
+            padding: 8px 18px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: rgba(255,255,255,0.85);
+            border-radius: var(--radius-full);
+            transition: var(--transition);
+            letter-spacing: 0.01em;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+            background: rgba(255,255,255,0.15);
+        }
+
+        header.scrolled .nav-links a {
+            color: var(--gray-600);
+        }
+
+        header.scrolled .nav-links a:hover {
+            color: var(--blue-900);
+            background: var(--blue-50);
+        }
+
+        .nav-btn {
+            padding: 10px 28px !important;
+            background: var(--white) !important;
+            color: var(--blue-900) !important;
+            border-radius: var(--radius-full) !important;
+            font-weight: 600 !important;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-btn:hover {
+            background: var(--blue-50) !important;
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md) !important;
+        }
+
+        header.scrolled .nav-btn {
+            background: var(--blue-900) !important;
+            color: var(--white) !important;
+        }
+
+        header.scrolled .nav-btn:hover {
+            background: var(--blue-800) !important;
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            width: 32px;
+            height: 32px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        header.scrolled .menu-toggle span {
+            background: var(--blue-900);
+        }
+
+        .menu-toggle input {
+            display: none;
+        }
+
+        /* ============================================ */
+        /*              HERO SECTION                     */
+        /* ============================================ */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 40%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(12, 35, 64, 0.3) 0%,
+                rgba(12, 35, 64, 0.15) 40%,
+                rgba(12, 35, 64, 0.5) 75%,
+                rgba(12, 35, 64, 0.85) 100%
+            );
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: var(--radius-full);
+            color: var(--white);
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .hero-badge::before {
+            content: '✦';
+            color: var(--turquoise-light);
+            font-size: 0.7rem;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.75rem, 7vw, 5rem);
+            font-weight: 500;
+            color: var(--white);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--turquoise-light);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: rgba(255,255,255,0.8);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 620px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border-radius: var(--radius-full);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-sans);
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: var(--turquoise);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(8, 145, 178, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--blue-500);
+            box-shadow: 0 6px 30px rgba(8, 145, 178, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+        }
+
+        .btn-arrow {
+            font-size: 1.1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .btn:hover .btn-arrow {
+            transform: translateX(3px);
+        }
+
+        /* Hero stats */
+        .hero-stats {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.12);
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat-number {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--white);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stat-label {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* Hero scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+            animation: float 2s ease-in-out infinite;
+        }
+
+        /* ============================================ */
+        /*           SECTION PARTENAIRES                 */
+        /* ============================================ */
+        .partners {
+            padding: 60px 0;
+            background: var(--gray-50);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .partners-label {
+            text-align: center;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--gray-400);
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .partners-logos {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .partner-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--gray-300);
+            transition: var(--transition);
+            letter-spacing: -0.01em;
+        }
+
+        .partner-logo:hover {
+            color: var(--gray-500);
+        }
+
+        .partner-logo svg {
+            width: 28px;
+            height: 28px;
+            opacity: 0.5;
+        }
+
+        /* ============================================ */
+        /*         COMMENT ÇA MARCHE                     */
+        /* ============================================ */
+        .how-it-works {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 72px;
+        }
+
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--turquoise);
+            margin-bottom: 16px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--turquoise);
+            opacity: 0.4;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 500;
+            color: var(--blue-900);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--gray-500);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            position: relative;
+        }
+
+        .steps-grid::before {
+            content: '';
+            position: absolute;
+            top: 48px;
+            left: 12%;
+            right: 12%;
+            height: 2px;
+            background: linear-gradient(to right, var(--blue-100), var(--turquoise), var(--blue-100));
+            z-index: 0;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--blue-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--blue-900);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .step-card:hover .step-number {
+            background: var(--blue-900);
+            color: var(--white);
+            border-color: var(--blue-900);
+            transform: scale(1.08);
+            box-shadow: 0 8px 30px rgba(12, 35, 64, 0.25);
+        }
+
+        .step-icon {
+            position: absolute;
+            bottom: -6px;
+            right: -2px;
+            width: 30px;
+            height: 30px;
+            background: var(--turquoise);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.85rem;
+            box-shadow: 0 2px 10px rgba(8, 145, 178, 0.3);
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--blue-900);
+            margin-bottom: 10px;
+        }
+
+        .step-desc {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* ============================================ */
+        /*       DESTINATIONS POPULAIRES                 */
+        /* ============================================ */
+        .destinations {
+            padding: 120px 0;
+            background: var(--blue-50);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .destinations::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(8,145,178,0.06), transparent 70%);
+        }
+
+        .destinations .section-header {
+            margin-bottom: 56px;
+        }
+
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto;
+            gap: 24px;
+        }
+
+        .dest-card {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dest-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .dest-card:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .dest-card-img {
+            width: 100%;
+            height: 100%;
+            min-height: 280px;
+            object-fit: cover;
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dest-card:nth-child(1) .dest-card-img {
+            min-height: 100%;
+        }
+
+        .dest-card:hover .dest-card-img {
+            transform: scale(1.08);
+        }
+
+        .dest-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(12,35,64,0.85) 0%, rgba(12,35,64,0.1) 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 28px;
+            transition: var(--transition);
+        }
+
+        .dest-card:hover .dest-card-overlay {
+            background: linear-gradient(to top, rgba(12,35,64,0.9) 0%, rgba(12,35,64,0.15) 60%);
+        }
+
+        .dest-tag {
+            display: inline-flex;
+            align-self: flex-start;
+            padding: 5px 14px;
+            background: rgba(8, 145, 178, 0.9);
+            color: var(--white);
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            border-radius: var(--radius-full);
+            margin-bottom: 12px;
+        }
+
+        .dest-card-name {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+
+        .dest-card:nth-child(1) .dest-card-name {
+            font-size: 2rem;
+        }
+
+        .dest-card-location {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            font-weight: 300;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dest-card-price {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--blue-900);
+        }
+
+        .dest-card-price small {
+            font-weight: 400;
+            color: var(--gray-500);
+            font-size: 0.75rem;
+        }
+
+        .dest-see-all {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .btn-secondary {
+            background: var(--blue-900);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(12, 35, 64, 0.25);
+        }
+
+        .btn-secondary:hover {
+            background: var(--blue-800);
+            box-shadow: 0 6px 30px rgba(12, 35, 64, 0.35);
+            transform: translateY(-2px);
+        }
+
+        /* ============================================ */
+        /*            TÉMOIGNAGES                        */
+        /* ============================================ */
+        .testimonials {
+            padding: 120px 0;
+            background: var(--white);
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            border-color: var(--blue-200);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .testimonial-quote-icon {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: var(--blue-100);
+            line-height: 1;
+            margin-bottom: -10px;
+            display: block;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--blue-100);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--blue-900);
+        }
+
+        .testimonial-trip {
+            font-size: 0.78rem;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        .testimonial-stars {
+            color: var(--sand-dark);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        /* ============================================ */
+        /*              NEWSLETTER / FORM                */
+        /* ============================================ */
+        .newsletter {
+            padding: 120px 0;
+            background: var(--blue-900);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='1.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .newsletter-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter .section-label {
+            color: var(--turquoise-light);
+        }
+
+        .newsletter .section-label::before,
+        .newsletter .section-label::after {
+            background: var(--turquoise-light);
+        }
+
+        .newsletter .section-title {
+            color: var(--white);
+        }
+
+        .newsletter .section-desc {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            margin-top: 40px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form input[type="email"] {
+            flex: 1;
+            padding: 16px 24px;
+            border: 1.5px solid rgba(255,255,255,0.15);
+            border-radius: var(--radius-full);
+            background: rgba(255,255,255,0.08);
+            color: var(--white);
+            font-size: 0.9rem;
+            font-family: var(--font-sans);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .newsletter-form input[type="email"]::placeholder {
+            color: rgba(255,255,255,0.35);
+        }
+
+        .newsletter-form input[type="email"]:focus {
+            border-color: var(--turquoise);
+            background: rgba(255,255,255,0.12);
+        }
+
+        .newsletter-form button {
+            padding: 16px 32px;
+            background: var(--turquoise);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-full);
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            box-shadow: 0 4px 20px rgba(8,145,178,0.4);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--turquoise-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px rgba(8,145,178,0.5);
+        }
+
+        .newsletter-note {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.3);
+            margin-top: 16px;
+        }
+
+        /* Decorative orbs */
+        .newsletter .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+        }
+
+        .newsletter .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--turquoise);
+            top: -100px;
+            left: -100px;
+        }
+
+        .newsletter .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--blue-400);
+            bottom: -80px;
+            right: -80px;
+        }
+
+        /* ============================================ */
+        /*              FOOTER                           */
+        /* ============================================ */
+        footer {
+            background: var(--gray-900);
+            padding: 80px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .footer-brand .nav-logo {
+            display: inline-block;
+            margin-bottom: 18px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.4);
+            line-height: 1.8;
+            font-weight: 300;
+            max-width: 320px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--turquoise);
+            border-color: var(--turquoise);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .footer-col-title {
+            font-size: 0.78rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.4);
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--turquoise-light);
+            transform: translateX(4px);
+        }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 28px 0;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.25);
+            font-weight: 300;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255,255,255,0.25);
+        }
+
+        .footer-bottom-links a:hover {
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ============================================ */
+        /*          RESPONSIVE DESIGN                   */
+        /* ============================================ */
+        @media (max-width: 1024px) {
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .steps-grid::before {
+                display: none;
+            }
+
+            .dest-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dest-card:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .dest-card:nth-child(1) .dest-card-img {
+                min-height: 350px;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 2;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                height: 68px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* CSS-only mobile menu */
+            .mobile-menu {
+                display: none;
+                position: fixed;
+                inset: 0;
+                background: rgba(12, 35, 64, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                z-index: 999;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .menu-toggle input:checked ~ .mobile-menu {
+                display: flex;
+            }
+
+            .mobile-menu a {
+                font-size: 1.5rem;
+                font-weight: 500;
+                color: rgba(255,255,255,0.8);
+                padding: 12px 24px;
+                border-radius: var(--radius-full);
+                transition: var(--transition);
+            }
+
+            .mobile-menu a:hover {
+                color: var(--white);
+                background: rgba(255,255,255,0.1);
+            }
+
+            .mobile-menu .btn {
+                margin-top: 20px;
+                font-size: 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.2rem, 8vw, 3.5rem);
+            }
+
+            .hero-stats {
+                gap: 24px;
+                flex-wrap: wrap;
+            }
+
+            .hero-stat-number {
+                font-size: 1.5rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .dest-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dest-card:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .dest-card:nth-child(1) .dest-card-img {
+                min-height: 280px;
+            }
+
+            .dest-card:nth-child(1) .dest-card-name {
+                font-size: 1.35rem;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid .testimonial-card:last-child {
+                grid-column: span 1;
+                max-width: none;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .partners-logos {
+                gap: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===================================== -->
+                <!-- NAVBAR & HERO -->
+    <!-- ===================================== -->
+    <header>
+        <nav>
+            <a href="/" class="nav-logo">Evasion<span>.</span></a>
+
+            <div class="nav-links">
+                <a href="#hero">Accueil</a>
+                <a href="#destinations">Destinations</a>
+                <a href="#how">Comment ça marche</a>
+                <a href="#testimonials">Témoignages</a>
+                <a href="#newsletter">Contact</a>
+                <a href="#newsletter" class="nav-btn">Connexion</a>
+            </div>
+
+            <label class="menu-toggle">
+                <input type="checkbox">
+                <span></span>
+                <span></span>
+                <span></span>
+                <!-- Mobile menu (CSS-only) -->
+                <div class="mobile-menu">
+                    <a href="#hero">Accueil</a>
+                    <a href="#destinations">Destinations</a>
+                    <a href="#how">Comment ça marche</a>
+                    <a href="#testimonials">Témoignages</a>
+                    <a href="#newsletter">Contact</a>
+                    <a href="#newsletter" class="btn btn-primary">Connexion</a>
+                </div>
+            </label>
+        </nav>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <img src="https://z-cdn-media.chatglm.cn/files/de8561aa-a994-4216-bcc9-41e0b55c31df.png?auth_key=1877469787-dbd91d78d9ed4a6ab7732771ebe3de25-0-49df8c856487667cb79f7e1629a30644" alt="Navagio Beach - Zakynthos, Grèce">
+            </div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge animate-fade-up">Destination exclusive</div>
+                <h1 class="animate-fade-up animate-fade-up-delay-1">
+                    Découvrez l'<em>évasion</em> absolue
+                </h1>
+                <p class="animate-fade-up animate-fade-up-delay-2">
+                    Des plages de rêve aux sommets enneigés, vivez des expériences uniques 
+                    soigneusement sélectionnées pour transformer chaque voyage en souvenir impérissable.
+                </p>
+                <div class="hero-actions animate-fade-up animate-fade-up-delay-3">
+                    <a href="#destinations" class="btn btn-primary">
+                        Explorer les destinations
+                        <span class="btn-arrow">→</span>
+                    </a>
+                    <a href="#how" class="btn btn-outline">
+                        Comment ça marche
+                    </a>
+                </div>
+
+                <div class="hero-stats animate-fade-up animate-fade-up-delay-4">
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">150+</div>
+                        <div class="hero-stat-label">Destinations</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">25K</div>
+                        <div class="hero-stat-label">Voyageurs</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">4.9</div>
+                        <div class="hero-stat-label">Note moyenne</div>
+                    </div>
+                    <div class="hero-stat">
+                        <div class="hero-stat-number">98%</div>
+                        <div class="hero-stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-indicator animate-fade-up animate-fade-up-delay-5">
+                <span>Défiler</span>
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- PARTENAIRES -->
+        <section class="partners">
+            <div class="container">
+                <p class="partners-label">Ils nous font confiance</p>
+                <div class="partners-logos">
+                    <div class="partner-logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        AirFrance
+                    </div>
+                    <div class="partner-logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg>
+                        Booking
+                    </div>
+                    <div class="partner-logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        TripAdvisor
+                    </div>
+                    <div class="partner-logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        Expedia
+                    </div>
+                    <div class="partner-logo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                        Airbnb
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMENT ÇA MARCHE -->
+        <section class="how-it-works" id="how">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Simplicité</div>
+                    <h2 class="section-title">Comment ça marche ?</h2>
+                    <p class="section-desc">
+                        Réservez votre voyage de rêve en quelques étapes simples. 
+                        Nous nous occupons de tout le reste.
+                    </p>
+                </div>
+
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">
+                            1
+                            <span class="step-icon">🔍</span>
+                        </div>
+                        <h3 class="step-title">Explorez</h3>
+                        <p class="step-desc">
+                            Parcourez notre catalogue de 150+ destinations soigneusement sélectionnées aux quatre coins du monde.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">
+                            2
+                            <span class="step-icon">✏️</span>
+                        </div>
+                        <h3 class="step-title">Personnalisez</h3>
+                        <p class="step-desc">
+                            Adaptez chaque détail à vos envies : hébergement, activités, transport, dates flexibles.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">
+                            3
+                            <span class="step-icon">💳</span>
+                        </div>
+                        <h3 class="step-title">Réservez</h3>
+                        <p class="step-desc">
+                            Paiement sécurisé en quelques clics avec annulation gratuite jusqu'à 48h avant le départ.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">
+                            4
+                            <span class="step-icon">✈️</span>
+                        </div>
+                        <h3 class="step-title">Voyagez</h3>
+                        <p class="step-desc">
+                            Profitez d'une expérience sans stress avec notre accompagnement 24/7 tout au long de votre séjour.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESTINATIONS POPULAIRES -->
+        <section class="destinations" id="destinations">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Tendances</div>
+                    <h2 class="section-title">Destinations populaires</h2>
+                    <p class="section-desc">
+                        Les lieux les plus convoités par nos voyageurs cette saison. 
+                        Inspiration garantie.
+                    </p>
+                </div>
+
+                <div class="dest-grid">
+                    <!-- Carte principale - Zakynthos -->
+                    <a href="#" class="dest-card">
+                        <img class="dest-card-img" src="https://z-cdn-media.chatglm.cn/files/de8561aa-a994-4216-bcc9-41e0b55c31df.png?auth_key=1877469787-dbd91d78d9ed4a6ab7732771ebe3de25-0-49df8c856487667cb79f7e1629a30644" alt="Zakynthos">
+                        <div class="dest-card-overlay">
+                            <span class="dest-tag">⭐ Coup de cœur</span>
+                            <h3 class="dest-card-name">Zakynthos</h3>
+                            <span class="dest-card-location">📍 Grèce · Îles Ioniennes</span>
+                        </div>
+                        <span class="dest-card-price">890€ <small>/pers</small></span>
+                    </a>
+
+                    <!-- Santorin -->
+                    <a href="#" class="dest-card">
+                        <img class="dest-card-img" src="https://picsum.photos/seed/santorini-blue/600/500.jpg" alt="Santorin">
+                        <div class="dest-card-overlay">
+                            <span class="dest-tag">Romantique</span>
+                            <h3 class="dest-card-name">Santorin</h3>
+                            <span class="dest-card-location">📍 Grèce · Cyclades</span>
+                        </div>
+                        <span class="dest-card-price">1 250€ <small>/pers</small></span>
+                    </a>
+
+                    <!-- Bali -->
+                    <a href="#" class="dest-card">
+                        <img class="dest-card-img" src="https://picsum.photos/seed/bali-temple-rice/600/500.jpg" alt="Bali">
+                        <div class="dest-card-overlay">
+                            <span class="dest-tag">Aventure</span>
+                            <h3 class="dest-card-name">Bali</h3>
+                            <span class="dest-card-location">📍 Indonésie</span>
+                        </div>
+                        <span class="dest-card-price">1 100€ <small>/pers</small></span>
+                    </a>
+
+                    <!-- Maldives -->
+                    <a href="#" class="dest-card">
+                        <img class="dest-card-img" src="https://picsum.photos/seed/maldives-water-villa/600/500.jpg" alt="Maldives">
+                        <div class="dest-card-overlay">
+                            <span class="dest-tag">Luxe</span>
+                            <h3 class="dest-card-name">Maldives</h3>
+                            <span class="dest-card-location">📍 Océan Indien</span>
+                        </div>
+                        <span class="dest-card-price">2 400€ <small>/pers</small></span>
+                    </a>
+
+                    <!-- Marrakech -->
+                    <a href="#" class="dest-card">
+                        <img class="dest-card-img" src="https://picsum.photos/seed/marrakech-medina-colors/600/500.jpg" alt="Marrakech">
+                        <div class="dest-card-overlay">
+                            <span class="dest-tag">Culture</span>
+                            <h3 class="dest-card-name">Marrakech</h3>
+                            <span class="dest-card-location">📍 Maroc</span>
+                        </div>
+                        <span class="dest-card-price">650€ <small>/pers</small></span>
+                    </a>
+                </div>
+
+                <div class="dest-see-all">
+                    <a href="#" class="btn btn-secondary">
+                        Voir toutes les destinations
+                        <span class="btn-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TÉMOIGNAGES -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <div class="section-label">Avis voyageurs</div>
+                    <h2 class="section-title">Ce qu'ils en disent</h2>
+                    <p class="section-desc">
+                        Des milliers de voyageurs nous font confiance. 
+                        Découvrez leurs retours d'expérience.
+                    </p>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <span class="testimonial-quote-icon">"</span>
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            Un voyage à Zakynthos absolument magique. La plage du Navagio est encore plus 
+                            belle en réalité que sur les photos. L'organisation était parfaite du début à la fin.
+                        </p>
+                        <div class="testimonial-author">
+                            <img class="testimonial-avatar" src="https://picsum.photos/seed/avatar-woman1/96/96.jpg" alt="Sophie M.">
+                            <div>
+                                <div class="testimonial-name">Sophie M.</div>
+                                <div class="testimonial-trip">Zakynthos · Juillet 2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <span class="testimonial-quote-icon">"</span>
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            Evasion a su créer un itinéraire sur mesure pour notre lune de miel à Santorin. 
+                            Les couchers de soleil depuis notre villa étaient à couper le souffle.
+                        </p>
+                        <div class="testimonial-author">
+                            <img class="testimonial-avatar" src="https://picsum.photos/seed/avatar-man1/96/96.jpg" alt="Thomas R.">
+                            <div>
+                                <div class="testimonial-name">Thomas R.</div>
+                                <div class="testimonial-trip">Santorin · Septembre 2025</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <span class="testimonial-quote-icon">"</span>
+                        <div class="testimonial-stars">★★★★★</div>
+                        <p class="testimonial-text">
+                            Le rapport qualité-prix est imbattable. Bali était un rêve devenu réalité : 
+                            rizières, temples, culture locale... Tout était flawlessly organisé.
+                        </p>
+                        <div class="testimonial-author">
+                            <img class="testimonial-avatar" src="https://picsum.photos/seed/avatar-woman2/96/96.jpg" alt="Camille D.">
+                            <div>
+                                <div class="testimonial-name">Camille D.</div>
+                                <div class="testimonial-trip">Bali · Avril 2025</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER / CONTACT -->
+        <section class="newsletter" id="newsletter">
+            <div class="orb orb-1"></div>
+            <div class="orb orb-2"></div>
+
+            <div class="container">
+                <div class="newsletter-inner">
+                    <div class="section-label">Restez inspiré</div>
+                    <h2 class="section-title">Prêt pour votre prochaine aventure ?</h2>
+                    <p class="section-desc">
+                        Inscrivez-vous à notre newsletter et recevez en avant-première 
+                        nos offres exclusives, guides de voyage et inspirations.
+                    </p>
+
+                    <form class="newsletter-form" onsubmit="return false;">
+                        <input type="email" placeholder="votre@email.com" required>
+                        <button type="submit">S'inscrire</button>
+                    </form>
+
+                    <p class="newsletter-note">
+                        Pas de spam. Désinscription en un clic. Vos données sont protégées.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="nav-logo">Evasion<span>.</span></a>
+                    <p>
+                        Votre partenaire de confiance pour des voyages inoubliables. 
+                        Nous transformons vos rêves d'évasion en réalités mémorables depuis 2020.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="Facebook">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Destinations</h4>
+                    <div class="footer-links">
+                        <a href="#">Grèce</a>
+                        <a href="#">Indonésie</a>
+                        <a href="#">Maldives</a>
+                        <a href="#">Maroc</a>
+                        <a href="#">Thaïlande</a>
+                        <a href="#">Italie</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Entreprise</h4>
+                    <div class="footer-links">
+                        <a href="#">À propos</a>
+                        <a href="#">Notre équipe</a>
+                        <a href="#">Carrières</a>
+                        <a href="#">Presse</a>
+                        <a href="#">Partenaires</a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-col-title">Support</h4>
+                    <div class="footer-links">
+                        <a href="#">Centre d'aide</a>
+                        <a href="#">Nous contacter</a>
+                        <a href="#">FAQ</a>
+                        <a href="#">Conditions</a>
+                        <a href="#">Confidentialité</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Evasion. Tous droits réservés.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Mentions légales</a>
+                    <a href="#">Politique de confidentialité</a>
+                    <a href="#">Cookies</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================ -->
+    <!--    MINIMAL JS FOR SCROLL ONLY (optional)      -->
+    <!-- ============================================ -->
+    <script>
+        // Only for navbar scroll effect — remove if strictly CSS-only needed
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 60);
+        });
+    </script>
+</body>
+</html>

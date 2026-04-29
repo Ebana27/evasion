@@ -1,0 +1,201 @@
+/* Réinitialisation de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* Header & Nav */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    z-index: 10;
+}
+
+.logo {
+    color: white;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    color: white;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
+                url('../assets/img/\ \(8\).png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero-content {
+    min-width: 800px;
+    padding: 20px;
+}
+
+.hero-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    font-weight: 300;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-main {
+    display: inline-block;
+    background-color: white;
+    color: #000;
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-main:hover {
+    transform: scale(1.05);
+}
+
+/* Section Destinations Populaires */
+/* Configuration globale des polices */
+.destinations-section {
+    padding: 80px 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* En-tête de section */
+.section-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: #080808;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+.btn-dark {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 12px 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Grille des cartes */
+.destinations-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
+    grid-template-rows: repeat(2, 350px); /* 2 lignes de 350px */
+    gap: 25px;
+}
+
+/* Style de la carte */
+.destination-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end; /* Texte en bas */
+}
+
+/* Overlay dégradé pour la lisibilité du texte */
+.card-overlay {
+    width: 100%;
+    padding: 25px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    color: #fff;
+}
+
+.card-overlay h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.card-overlay p {
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+/* Banner partenaire */
+.__container {
+    width: 100%;
+    padding: 0 20px;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo_part {
+    min-width: 150px;
+    height: auto;
+    margin: 30px;
+}

@@ -1,70 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evasion | Accueil</title>
+    <title>Évasion - Agence de Voyage</title>
     <link rel="stylesheet" href="./css/style.css">
+    <!-- Liée le style globale -->
+    <link rel="stylesheet" href="/css/themes/global.css">
+    <link
+    
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
-    <!-- ===================================== -->
-                <!-- NAVBAR & HERO -->
-    <!-- ===================================== -->
 
-     <header>
-        <!-- *Attributions : Louama Mignon -->
+    <header>
+        <div class="logo">
+            <h1>Evasion</h1>
+        </div>
         <nav>
-            <div>
-                <a href="/">Evasion</a>
-            </div>
-            <div>
-                <ul>
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="./pages/destinations.html">Destinations</a></li>
-                    <li><a href="./pages/offres.html">Offres</a></li>
-                    <li><a href="./pages/apropos.html">À propos</a></li>
-                    <li><a href="./pages/contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="__connexion_btn">
-                <a href="./pages/connexion.html">Connexion</a>
-            </div>
+            <ul>
+                <li><a href="#" class="active">Accueil</a></li>
+                <li><a href="#">Destinations</a></li>
+                <li><a href="#">Offres</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
         </nav>
-     </header>
+    </header>
 
-     <main>
-        <!-- Contenu principal -->
-         <p>Contenue principale ici</p>
-         <section>
-            <!-- Section partenaire -->
-             <!-- *Attributions : Louama Mignon -->
-         </section>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Une nouvelle façon de s'évader.<br>Découvrez le monde.</h2>
+                <p>Planifiez vos vacances de rêve avec Évasion, votre agence de voyage sur mesure pour étudiants,
+                    familles et professionnels.</p>
+                <a href="#" class="btn-main">Découvrir les Destinations</a>
+            </div>
+        </section>
 
-         <section>
-            <!-- Section comment ça marche -->
-             <!-- *Attributions : Louama Mignon -->
-         </section>
+        <section class="banner_partner">
+            <div class="__container">
+                <div class="logo_part"><img src="./assets/logo/ (1).svg" alt="airbnb_logo"></div>
+                <div class="logo_part"><img src="./assets/logo/ (2).svg" alt="airfrance_logo"></div>
+                <div class="logo_part"><img src="./assets/logo/ (3).svg" alt="airbust_logo"></div>
+            </div>
+        </section>
 
-         <section>
-            <!-- Section Nos destinations populaires -->
-             <!-- *Attributions : Joelle -->
-         </section>
+        <section class="destinations-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Nos Destinations populaires</h2>
+                    <p class="section-subtitle">Découvrez nos destinations les plus prisées à travers le monde.</p>
+                    <a href="#" class="btn-dark">Voir plus</a>
+                </div>
 
-         <section>
-            <!-- section témoignages -->
-             <!-- *Attributions : Melissa -->
-         </section>
+                <div class="destinations-grid">
+                    <div class="destination-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80');">
+                        <div class="card-overlay">
+                            <h3>Paris, La Ville Lumière</h3>
+                            <p>France • Dès 499€</p>
+                        </div>
+                    </div>
 
-         <section>
-            <!-- Formulaire -->
-             <!-- *Attributions : Gervais -->
-         </section>
-     </main>
+                    <div class="destination-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=500&q=80');">
+                        <div class="card-overlay">
+                            <h3>Santorin, La Perle Grecque</h3>
+                            <p>Grèce • Dès 1299€</p>
+                        </div>
+                    </div>
 
-     <footer>
-        <!-- Pied de page -->
-        <!-- *Attributions : Plamedi Ebana -->
-        <p>&copy; 2026 Evasion. Tous droits réservés.</p>
-     </footer>
+                    <div class="destination-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=500&q=80');">
+                        <div class="card-overlay">
+                            <h3>Bali, Le Paradis Vert</h3>
+                            <p>Indonésie • Dès 750€</p>
+                        </div>
+                    </div>
+
+                    <div class="destination-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=500&q=80');">
+                        <div class="card-overlay">
+                            <h3>Montagnes Rocheuses</h3>
+                            <p>Canada • Dès 890€</p>
+                        </div>
+                    </div>
+
+                    <div class="destination-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=500&q=80');">
+                        <div class="card-overlay">
+                            <h3>Venise, La Cité de l'Eau</h3>
+                            <p>Italie • Dès 550€</p>
+                        </div>
+                    </div>
+
+                    <div class="destination-card"
+                        style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bbaa?auto=format&fit=crop&w=500&q=80');">
+                        <div class="card-overlay">
+                            <h3>Agra, La Magie du Taj Mahal</h3>
+                            <p>Inde • Dès 1100€</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
 </body>
+
 </html>
