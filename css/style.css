@@ -1,4 +1,3 @@
-/* Réinitialisation de base */
 * {
     margin: 0;
     padding: 0;
@@ -7,11 +6,11 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    color: #fff;
+    color: #000;
     line-height: 1.6;
+    background-color: #fff;
 }
 
-/* Header & Nav */
 header {
     position: absolute;
     top: 0;
@@ -23,8 +22,9 @@ header {
     z-index: 10;
 }
 
-.logo {
+.logo h1 {
     color: white;
+    font-family: 'Playfair Display', serif;
 }
 
 nav ul {
@@ -49,11 +49,9 @@ nav ul li a:hover, nav ul li a.active {
     padding-bottom: 5px;
 }
 
-/* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), 
-                url('../assets/img/\ \(8\).png');
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../assets/img/\ \(8\).png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -65,7 +63,6 @@ nav ul li a:hover, nav ul li a.active {
 
 .hero-content {
     min-width: 800px;
-    padding: 20px;
 }
 
 .hero-content h2 {
@@ -86,26 +83,56 @@ nav ul li a:hover, nav ul li a.active {
 
 .btn-main {
     display: inline-block;
-    background-color: white;
+    background-color: #fff;
     color: #000;
     padding: 15px 35px;
-    border-radius: 50px;
-    text-decoration: none;
+    /*border-radius: 50px;
+    */text-decoration: none;
     font-weight: 600;
-    font-size: 0.9rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s;
+    -webkit-transition: transform 0.3s;
+    -moz-transition: transform 0.3s;
+    -ms-transition: transform 0.3s;
+    -o-transition: transform 0.3s;
 }
 
 .btn-main:hover {
     transform: scale(1.05);
 }
 
-/* Section Destinations Populaires */
-/* Configuration globale des polices */
+/* Banner Partenaires */
+.banner_partner {
+    border-bottom: 1px solid var(--color-black);
+}
+
+.__container {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-white); /* Supprimé le bleu clair */
+}
+
+.logo_part {
+    min-width: 150px;
+    max-width: 200px;
+    height: auto;
+    margin: 0 40px;
+}
+
+/* Force les logos en noir et blanc */
+.logo_part img {
+    width: 100%;
+    filter: grayscale(100%) contrast(120%);
+}
+
+.logo_part img:hover {
+    opacity: 1; 
+}
+
 .destinations-section {
     padding: 80px 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #fff;
 }
 
 .container {
@@ -114,7 +141,6 @@ nav ul li a:hover, nav ul li a.active {
     padding: 0 20px;
 }
 
-/* En-tête de section */
 .section-header {
     text-align: center;
     margin-bottom: 50px;
@@ -123,13 +149,11 @@ nav ul li a:hover, nav ul li a.active {
 .section-title {
     font-family: 'Playfair Display', serif;
     font-size: 2.5rem;
-    color: #080808;
     margin-bottom: 10px;
 }
 
 .section-subtitle {
     font-size: 0.95rem;
-    color: #000000;
     margin-bottom: 25px;
 }
 
@@ -138,22 +162,43 @@ nav ul li a:hover, nav ul li a.active {
     background-color: #000;
     color: #fff;
     padding: 12px 35px;
-    border-radius: 5px;
     text-decoration: none;
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
+    border: 1px solid #000;
+    transition: 0.3s;
 }
 
-/* Grille des cartes */
+.btn-dark:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.__btn-no-dark {
+    background-color: transparent;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: 1px solid #ffffff;
+    transition: 0.3s;
+}
+
+.__btn-no-dark:hover {
+    background-color: #fff;
+    color: #000000;
+}
+
 .destinations-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes fixes */
-    grid-template-rows: repeat(2, 350px); /* 2 lignes de 350px */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 350px);
     gap: 25px;
 }
 
-/* Style de la carte */
 .destination-card {
     position: relative;
     border-radius: 12px;
@@ -161,41 +206,73 @@ nav ul li a:hover, nav ul li a.active {
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: flex-end; /* Texte en bas */
+    align-items: flex-end;
 }
 
-/* Overlay dégradé pour la lisibilité du texte */
 .card-overlay {
     width: 100%;
     padding: 25px;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
     color: #fff;
 }
 
-.card-overlay h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 5px;
+.__container_pack {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 50px;
 }
 
-.card-overlay p {
-    font-size: 0.85rem;
-    opacity: 0.9;
-}
-
-/* Banner partenaire */
-.__container {
-    width: 100%;
-    padding: 0 20px;
-    height: 5%;
+.__pack {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 0.5px solid #000;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    box-shadow: 0 0 0 0 #000;
+    transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+    -webkit-transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+    -moz-transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+    -ms-transition: cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.logo_part {
-    min-width: 150px;
-    height: auto;
-    margin: 30px;
+.__pack:hover {
+    box-shadow: 6px 6px 0px 0px black;
+}
+
+.__img_pack {
+    width: 180px;
+    flex-shrink: 0;
+}
+
+.__img_pack img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.__content_offer {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.__content_offer h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.__content_offer p {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    color: #444;
 }
