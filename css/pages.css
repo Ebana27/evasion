@@ -1,1 +1,171 @@
-main{padding:40px;text-align:center}
+/* --- Mise en page Split --- */
+.split-contact {
+    display: flex;
+    min-height: 100vh;
+    background: #fff;
+}
+
+/* --- Côté Infos --- */
+.contact-info {
+    flex: 1;
+    background: #000;
+    color: #fff;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.tagline {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.contact-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+    line-height: 1.1;
+    margin: 20px 0 60px 0;
+}
+
+.contact-info h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: #3385ff;
+}
+
+.detail-item {
+    margin-bottom: 30px;
+}
+
+.detail-item span {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.detail-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+.socials {
+    margin-top: 60px;
+    display: flex;
+    gap: 20px;
+}
+
+.socials a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+.socials a:hover {
+    color: #888;
+    border-color: #fff;
+}
+
+/* --- Côté Formulaire --- */
+.contact-form-side {
+    flex: 1;
+    padding: 80px;
+    display: flex;
+    align-items: center;
+}
+
+.creative-form {
+    width: 100%;
+    max-width: 500px;
+}
+
+.floating-group {
+    position: relative;
+    margin-bottom: 60px;
+}
+
+.floating-group input, 
+.floating-group textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0;
+    font-size: 1.2rem;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    background: transparent;
+    transition: border-color 0.4s;
+}
+
+.floating-group label {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    font-size: 1.2rem;
+    color: #999;
+    pointer-events: none;
+    transition: all 0.4s ease;
+}
+
+/* Effet au clic (Focus) ou quand rempli */
+.floating-group input:focus ~ label,
+.floating-group input:not(:placeholder-shown) ~ label,
+.floating-group textarea:focus ~ label,
+.floating-group textarea:not(:placeholder-shown) ~ label {
+    top: -20px;
+    font-size: 0.75rem;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.floating-group input:focus, 
+.floating-group textarea:focus {
+    border-color: #000;
+}
+
+/* Bouton Créatif */
+.btn-submit-creative {
+    background: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.btn-submit-creative .arrow {
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-submit-creative:hover .arrow {
+    transform: translateX(15px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .split-contact {
+        flex-direction: column;
+    }
+    .contact-info, .contact-form-side {
+        padding: 50px 30px;
+    }
+}

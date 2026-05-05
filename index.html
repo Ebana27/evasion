@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Évasion - Agence de Voyage</title>
     <link rel="stylesheet" href="./css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -17,82 +19,93 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#" class="active">Accueil</a></li>
-                <li><a href="#">Destinations</a></li>
-                <li><a href="#">Offres</a></li>
-                <li><a href="#">À propos</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="./pages/destinations.html">Destinations</a></li>
+                <li><a href="./pages/offres.html">Offres</a></li>
+                <li><a href="./pages/apropos.html">À propos</a></li>
+                <li><a href="./pages/contact.html">Contact</a></li>
             </ul>
         </nav>
-        <!-- <div class="logo">
-            <a href="#" class="__btn-no-dark">Connexion</a>
-        </div> -->
     </header>
 
     <main>
         <section class="hero">
             <div class="hero-content">
                 <h2>Une nouvelle façon de s'évader.<br>Découvrez le monde.</h2>
-                <p>Planifiez vos vacances de rêve avec Évasion, votre agence de voyage sur mesure pour étudiants, familles et professionnels.</p>
-                <a href="#" class="btn-main">Découvrir les Destinations</a>
+                <p>Planifiez vos vacances de rêve avec Évasion, votre agence de voyage sur mesure pour étudiants,
+                    familles et professionnels.</p>
+                <a href="#destinations" class="btn-main">Découvrir les Destinations</a>
             </div>
         </section>
 
-        <section class="banner_partner">
-            <div class="__container">
-                <div class="logo_part"><img src="./assets/logo/ (1).svg" alt="airbnb_logo"></div>
-                <div class="logo_part"><img src="./assets/logo/ (2).svg" alt="airfrance_logo"></div>
-                <div class="logo_part"><img src="./assets/logo/ (3).svg" alt="airbust_logo"></div>
+        <section class="banner-partner">
+            <div class="container-partner">
+                <!-- Logo de airfrance -->
+                <div class="__partners-content-logo">
+                    <img src="./assets/logo/ (1).svg" alt="airfrance" class="partner-logo">
+                </div>
+                <!-- Logo de airbnb -->
+                <div class="__partners-content-logo">
+                    <img src="./assets/logo/ (2).svg" alt="airbnb" class="partner-logo">
+                </div>
+                <!-- Logo de aibus -->
+                <div class="__partners-content-logo">
+                    <img src="./assets/logo/ (3).svg" alt="aibus" class="partner-logo">
+                </div>
             </div>
         </section>
 
-        <section class="destinations-section">
+        <section class="destinations-section" id="destinations">
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Nos Destinations populaires</h2>
                     <p class="section-subtitle">Découvrez nos destinations les plus prisées à travers le monde.</p>
-                    <a href="#" class="btn-dark">Voir plus</a>
+                    <a href="./pages/destinations.html" class="btn-dark">Voir plus</a>
                 </div>
 
                 <div class="destinations-grid">
-                    <div class="destination-card" style="background-image: url(./assets/img\ \(3\).png)">
+                    <div class="destination-card">
+                        <img src="./assets/img/ (2).png" alt="Paris">
                         <div class="card-overlay">
                             <h3>Paris, La Ville Lumière</h3>
                             <p>France • Dès 499€</p>
                         </div>
                     </div>
-
-                    <div class="destination-card" style="background-image: url(./assets/img\ \(4\).png)">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=2000"
+                            alt="Santorin">
                         <div class="card-overlay">
                             <h3>Santorin, La Perle Grecque</h3>
                             <p>Grèce • Dès 1299€</p>
                         </div>
                     </div>
-
-                    <div class="destination-card" style="background-image: url(./assets/img\ \(5\).png)">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2038" alt="Bali">
                         <div class="card-overlay">
                             <h3>Bali, Le Paradis Vert</h3>
                             <p>Indonésie • Dès 750€</p>
                         </div>
                     </div>
-
-                    <div class="destination-card" style="background-image: url('./assets/img\ \(6\).png')">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070"
+                            alt="Montagnes">
                         <div class="card-overlay">
                             <h3>Montagnes Rocheuses</h3>
                             <p>Canada • Dès 890€</p>
                         </div>
                     </div>
-
-                    <div class="destination-card" style="background-image: url(./assets/img/\ \(7\).png)">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1514890547357-a9ee288728e0?q=80&w=2070"
+                            alt="Venise">
                         <div class="card-overlay">
                             <h3>Venise, La Cité de l'Eau</h3>
                             <p>Italie • Dès 550€</p>
                         </div>
                     </div>
-
-                    <div class="destination-card" style="background-image: url('./assets/img/\ \(2\).png')">
+                    <div class="destination-card">
+                        <img src="https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=2076" alt="Agra">
                         <div class="card-overlay">
-                            <h3>Agra, La Magie du Taj Mahal</h3>
+                            <h3>Agra, Taj Mahal</h3>
                             <p>Inde • Dès 1100€</p>
                         </div>
                     </div>
@@ -104,69 +117,133 @@
             <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Offres transparentes, packs qui rassurent</h2>
-                    <p class="section-subtitle">Trouvez votre bonheur parmi les packs de séjour offerts par nos partenaires nationaux.</p>
-                    <a href="#" class="btn-dark">Voir plus</a>
+                    <p class="section-subtitle">Trouvez votre bonheur parmi les packs de séjour offerts par nos
+                        partenaires nationaux.</p>
                 </div>
 
-                <div class="__container_pack">
-                    <div class="__pack">
-                        <div class="__img_pack">
-                            <img src="./assets/img/ (4).png" alt="icon_part_1">
+                <div class="container-pack">
+                    <div class="pack">
+                        <div class="img-pack">
+                            <img src="https://images.unsplash.com/photo-1504280390227-6f92d6e3fbcd?q=80&w=2070"
+                                alt="Découverte">
                         </div>
-                        <div class="__content_offer">
+                        <div class="content-offer">
                             <h3>Pack Découverte</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore tenetur.</p>
-                            <a href="#" class="btn-dark">Accepter l'offre</a>
+                            <p>Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore
+                                tenetur.</p>
+                            <a href="./pages/offres.html" class="btn-dark">Accepter l'offre</a>
                         </div>
                     </div>
 
-                    <div class="__pack">
-                        <div class="__img_pack">
-                            <img src="./assets/img/ (3).png" alt="icon_part_2">
+                    <div class="pack">
+                        <div class="img-pack">
+                            <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?q=80&w=2070"
+                                alt="Aventure">
                         </div>
-                        <div class="__content_offer">
+                        <div class="content-offer">
                             <h3>Pack Aventure</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore tenetur.</p>
-                            <a href="#" class="btn-dark">Accepter l'offre</a>
+                            <p>Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore
+                                tenetur.</p>
+                            <a href="./pages/offres.html" class="btn-dark">Accepter l'offre</a>
                         </div>
                     </div>
 
-                    <div class="__pack">
-                        <div class="__img_pack">
-                            <img src="./assets/img/ (2).png" alt="icon_part_3">
+                    <div class="pack">
+                        <div class="img-pack">
+                            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=2073"
+                                alt="Détente">
                         </div>
-                        <div class="__content_offer">
+                        <div class="content-offer">
                             <h3>Pack Détente</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore tenetur.</p>
-                            <a href="#" class="btn-dark">Accepter l'offre</a>
+                            <p>Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore
+                                tenetur.</p>
+                            <a href="./pages/offres.html" class="btn-dark">Accepter l'offre</a>
                         </div>
                     </div>
 
-                    <div class="__pack">
-                        <div class="__img_pack">
-                            <img src="./assets/img/ (1).png" alt="icon_part_4">
+                    <div class="pack">
+                        <div class="img-pack">
+                            <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?q=80&w=2074"
+                                alt="Premium">
                         </div>
-                        <div class="__content_offer">
+                        <div class="content-offer">
                             <h3>Pack Premium</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore tenetur.</p>
-                            <a href="#" class="btn-dark">Accepter l'offre</a>
+                            <p>Fugit culpa, praesentium possimus ducimus consequatur sed officia mollitia iusto tempore
+                                tenetur.</p>
+                            <a href="./pages/offres.html" class="btn-dark">Accepter l'offre</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section-comments">
-            <div class="container" style="margin-top: 1pc;">
+        <section class="section-comments" style="padding: 80px 0;">
+            <div class="container">
                 <div class="section-header">
                     <h2 class="section-title">Témoignages</h2>
-                    <p class="section-subtitle">Ce que nos clients penses</p>
-                    <!-- <a href="#" class="btn-dark">Voir plus</a> -->
+                    <p class="section-subtitle">Ce que nos voyageurs pensent de nous.</p>
+                </div>
+                <div class="__content-comment">
+                    <div class="__comment">
+                        <div class="container-img-comment"
+                            style="background-image: url('https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600');">
+                            <div class="content-comment">
+                                <h3>Marie Delavaiselle</h3>
+                                <p>"Évasion a rendu mes vacances inoubliables ! Le service était impeccable."</p>
+                            </div>
+                        </div>
+
+                        <div class="container-img-comment"
+                            style="background-image: url('https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=600');">
+                            <div class="content-comment">
+                                <h3>Thomas Dubois</h3>
+                                <p>"Une organisation parfaite du début à la fin. Je recommande vivement Évasion !"</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="__content"></div>
         </section>
+
+        <section class="cta-video">
+            <!-- Video CDN d'un voyage -->
+             <h2>Pret pour votre prochaine expérience ?</h2>
+             <span>
+                contactez-nous <a href="./pages/contact.html"><u>ici</u></a>
+             </span>
+             <video autoplay muted loop class="video-bg">
+                <source src="./assets/video/vid1.mp4" type="video/mp4">
+             </video>
+             <span>Vidéo de <a href="https://pixabay.com/fr/users/tonydias7-26930749/?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=318654">Antonio Dias</a> sur <a href="https://pixabay.com/fr//?utm_source=link-attribution&utm_medium=referral&utm_campaign=video&utm_content=318654">Pixabay</a></span>
+        </section>
+
     </main>
 
+    <footer class="footer-main">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <h3>Evasion</h3>
+                <p>Votre partenaire pour des aventures inoubliables aux quatre coins du globe.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#">Destinations</a></li>
+                    <li><a href="#">Offres Spéciales</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>Email: contact@evasion-voyage.fr</p>
+                <p>Tél: +33 1 23 45 67 89</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Évasion - Tous droits réservés.</p>
+        </div>
+    </footer>
+
 </body>
+
 </html>

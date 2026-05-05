@@ -1,29 +1,146 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Destinations</title>
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/pages.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Destinations | ESTIM Compagnie</title>
+    <link rel="stylesheet" href="../css/destinations.css">
+    <style>
+        .mignon-barre-recherche {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .mignon-formulaire-recherche {
+            display: flex;
+            align-items: center;
+        }
+
+        .mignon-formulaire-recherche input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .mignon-formulaire-recherche button {
+            background-color: #5e3838;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .mignon-section-hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .mignon-section-hero h1 {
+            font-size: 2.5em;
+            color: #5e3838;
+        }
+
+        .mignon-section-hero p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        .mignon-carte-destination {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .mignon-carte-destination img {
+            width: 100%;
+            height: auto;
+        }
+
+        .mignon-carte-destination .mignon-superposition {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
-<header class="header">
-  <h1>ÉVASION</h1>
-  <nav>
-    <a href="../index.html">Accueil</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="offres.html">Offres</a>
-    <a href="apropos.html">À propos</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+    <header class="search-bar">
+        <form action="recherche.php" method="GET" class="search-form">
+            <input type="text" name="q" placeholder="Où voulez-vous aller ?">
+            <button type="submit">🔍</button>
+        </form>
+    </header>
 
-<main>
-<h2>Destinations</h2>
-<p>Contenu à compléter...</p>
-</main>
+    <section class="hero-section">
+        <h1>Nos Destinations populaires</h1>
+        <p>Découvrez nos destinations les plus prisées à travers le monde.</p>
+            
+        <div class="scroll-wrapper">
+            <div class="destination-card large">
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073" alt="Paris">
+                <div class="overlay">
+                    <h3>Paris, La ville Lumière</h3>
+                    <p>France . Dès 300.000 XAF</p>
+                </div>
+            </div>
+            <div class="destination-card large">
+                <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?q=80&w=2000" alt="Santorin">
+                <div class="overlay">
+                    <h3>Santorin, La perle Grecque</h3>
+                    <p>Grèce . Dès 920.000 XAF</p>
+                </div>
+            </div>
+            <div class="destination-card large">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=2038" alt="Bali">
+                <div class="overlay">
+                    <h3>Bali, Le Paradis Vert</h3>
+                    <p>Indonésie . Dès 500.000 XAF</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="region">
+        <div class="region-intro">
+            <h2>Europe</h2>
+            <p>Entre histoire millénaire et modernité, l'Europe offre une diversité culturelle sans égale.</p>
+        </div>
+        <div class="scroll-wrapper small">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=1974" alt="Europe 1">
+                <div class="overlay"><h3>Prague</h3><p>Dès 450.000 XAF</p></div>
+            </div>
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?q=80&w=1966" alt="Europe 2">
+                <div class="overlay"><h3>Venise</h3><p>Dès 600.000 XAF</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="region">
+        <div class="region-intro">
+            <h2>Afrique</h2>
+            <p>Terre d'aventure et berceau de l'humanité, l'Afrique vous attend pour des moments authentiques.</p>
+        </div>
+        <div class="scroll-wrapper small">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?q=80&w=1974" alt="Afrique 1">
+                <div class="overlay"><h3>Le Cap</h3><p>Dès 350.000 XAF</p></div>
+            </div>
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1489491971852-42439548961e?q=80&w=2071" alt="Afrique 2">
+                <div class="overlay"><h3>Zanzibar</h3><p>Dès 420.000 XAF</p></div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>

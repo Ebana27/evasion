@@ -1,0 +1,35 @@
+/* --- Header & Nav --- */
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    z-index: 10;
+}
+
+.logo h1 {
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+nav ul li a:hover {
+    color: #fff;
+}

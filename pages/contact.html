@@ -1,29 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact</title>
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/pages.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Évasion</title>
+    <!-- <link rel="stylesheet" href="../css/themes/global.css"> -->
+    <link rel="stylesheet" href="../css/pages.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-<header class="header">
-  <h1>ÉVASION</h1>
-  <nav>
-    <a href="../index.html">Accueil</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="offres.html">Offres</a>
-    <a href="apropos.html">À propos</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+    <div class="split-contact">
+        <div class="contact-info">
+            <div class="info-content">
+                <span class="tagline">Bonjour.</span>
+                <h2>Parlons de votre prochaine <em>aventure</em>.</h2>
 
-<main>
-<h2>Contact</h2>
-<p>Contenu à compléter...</p>
-</main>
+                <div class="details">
+                    <div class="detail-item">
+                        <span>Localisation</span>
+                        <p>Avenue de l'Indépendance, Brazzaville, Congo</p>
+                    </div>
+                    <div class="detail-item">
+                        <span>Email</span>
+                        <p>contact@evasion-agence.org</p>
+                    </div>
+                    <div class="detail-item">
+                        <span>Téléphone</span>
+                        <p><a href="tel:+242067756084">+242 06 775 60 84</a></p>
+                    </div>
+                </div>
+
+                <div class="socials">
+                    <a href="#">Instagram</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Facebook</a>
+                </div>
+                <div style="margin-top: 10px;">
+                    <span>Un proprème ou désireux d'en savoir plus ? contactez-nous ici : <a
+                            href="./en-savoir-plus.html"><u>En savoir plus</u></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form-side">
+            <form class="creative-form">
+                <div class="floating-group">
+                    <input type="text" id="name" placeholder=" " required>
+                    <label for="name">Je m'appelle...</label>
+                </div>
+
+                <div class="floating-group">
+                    <input type="email" id="email" placeholder=" " required>
+                    <label for="email">Mon adresse email est...</label>
+                </div>
+
+                <div class="floating-group">
+                    <textarea id="message" placeholder=" " rows="4" required></textarea>
+                    <label for="message">Je souhaite vous dire que...</label>
+                </div>
+
+                <button type="submit" class="btn-submit-creative">
+                    <span><a style="color: #000;" href="./confirm.html">Envoyer le message</a></span>
+                    <span class="arrow">&rarr;</span>
+                </button>
+            </form>
+        </div>
+    </div>
 
 </body>
+
 </html>

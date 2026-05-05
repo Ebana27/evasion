@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Salles - Dashboard</title>
+    <style>
+        :root {
+            --primary: #1677ff;
+            --danger: #ff4d4f;
+            --success: #52c41a;
+            --bg: #f5f5f5;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --border: #d9d9d9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #4096ff;
+        }
+
+        .btn-edit {
+            background-color: #faad14;
+            color: white;
+            padding: 5px 10px;
+        }
+
+        .btn-delete {
+            background-color: var(--danger);
+            color: white;
+            padding: 5px 10px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background-color: #fafafa;
+            font-weight: 600;
+            color: #555;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #f9f9f9;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .uuid {
+            font-family: monospace;
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .btn-cancel {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-cancel:hover {
+            background-color: #d9d9d9;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Gestion des Salles</h1>
+            <button class="btn btn-primary" onclick="openModal()">+ Ajouter une salle</button>
+        </header>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nom de la salle</th>
+                        <th>Identifiant (UUID)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="salles-table-body">
+                    <!-- Les données seront injectées ici -->
+                </tbody>
+            </table>
+            <div id="empty-state" class="empty-state" style="display: none;">
+                Aucune salle trouvée.
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour Ajouter / Modifier -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal">
+            <h2 id="modal-title">Ajouter une salle</h2>
+            <form id="salle-form" onsubmit="saveSalle(event)">
+                <input type="hidden" id="salle-uuid">
+                <div class="form-group">
+                    <label for="salle-nom">Nom de la salle</label>
+                    <input type="text" id="salle-nom" required placeholder="Ex: Martin Luther King">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- CONFIGURATION ---
+        // REMPLACEZ CETTE URL PAR L'URL DE VOTRE API
+        const API_URL = "http://localhost:3000/salles"; 
+
+        const tableBody = document.getElementById('salles-table-body');
+        const emptyState = document.getElementById('empty-state');
+        const modal = document.getElementById('modal-overlay');
+        const form = document.getElementById('salle-form');
+        const nomInput = document.getElementById('salle-nom');
+        const uuidInput = document.getElementById('salle-uuid');
+        const modalTitle = document.getElementById('modal-title');
+
+        // --- FONCTIONS D'INTERFACE ---
+        
+        function openModal(uuid = null, nom = "") {
+            uuidInput.value = uuid;
+            nomInput.value = nom;
+            modalTitle.innerText = uuid ? "Modifier la salle" : "Ajouter une salle";
+            modal.classList.add('active');
+            nomInput.focus();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            form.reset();
+            uuidInput.value = null;
+        }
+
+        // Fermer la modal si on clique en dehors
+        window.onclick = function(event) {
+            if (event.target == modal) closeModal();
+        }
+
+        // --- FONCTIONS CRUD (APPELS API) ---
+
+        // 1. READ (Récupérer les salles)
+        async function fetchSalles() {
+            try {
+                const response = await fetch(API_URL);
+                const result = await response.json();
+
+                // On vérifie la clé "ok" et on extrait le tableau "data"
+                if (result.ok && result.data) {
+                    renderTable(result.data);
+                } else {
+                    console.error("Erreur API:", result);
+                    renderTable([]);
+                }
+            } catch (error) {
+                console.error("Erreur de réseau:", error);
+                alert("Impossible de contacter l'API. Vérifiez la console et l'URL de l'API.");
+            }
+        }
+
+        // Afficher les données dans le tableau HTML
+        function renderTable(salles) {
+            tableBody.innerHTML = "";
+
+            if (salles.length === 0) {
+                emptyState.style.display = "block";
+                return;
+            }
+
+            emptyState.style.display = "none";
+
+            salles.forEach(salle => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td><strong>${salle.nom}</strong></td>
+                    <td class="uuid" title="${salle.uuid}">${salle.uuid.substring(0, 8)}...</td>
+                    <td class="actions">
+                        <button class="btn btn-edit" onclick="editSalle('${salle.uuid}', '${salle.nom}')">Modifier</button>
+                        <button class="btn btn-delete" onclick="deleteSalle('${salle.uuid}', '${salle.nom}')">Supprimer</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        }
+
+        // 2. CREATE & UPDATE (Créer ou Mettre à jour)
+        async function saveSalle(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            
+            const uuid = uuidInput.value;
+            const nom = nomInput.value;
+            const isEdit = uuid !== null && uuid !== "";
+
+            // Configuration de la requête (POST pour créer, PUT pour modifier)
+            const options = {
+                method: isEdit ? 'PUT' : 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nom })
+            };
+
+            // Si c'est une modification, on ajoute l'UUID dans l'URL
+            const url = isEdit ? `${API_URL}/${uuid}` : API_URL;
+
+            try {
+                const response = await fetch(url, options);
+                
+                if (response.ok) {
+                    closeModal();
+                    fetchSalles(); // Rafraîchir la liste
+                } else {
+                    alert("Une erreur est survenue lors de l'enregistrement.");
+                }
+            } catch (error) {
+                alert("Erreur réseau.");
+            }
+        }
+
+        // Fonction pour pré-remplir le formulaire de modification
+        function editSalle(uuid, nom) {
+            openModal(uuid, nom);
+        }
+
+        // 3. DELETE (Supprimer)
+        async function deleteSalle(uuid, nom) {
+            if (!confirm(`Êtes-vous sûr de vouloir supprimer la salle "${nom}" ?`)) return;
+
+            try {
+                const response = await fetch(`${API_URL}/${uuid}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    fetchSalles(); // Rafraîchir la liste
+                } else {
+                    alert("Erreur lors de la suppression.");
+                }
+            } catch (error) {
+                alert("Erreur réseau.");
+            }
+        }
+
+        // --- INITIALISATION ---
+        // Charger les salles au démarrage de la page
+        document.addEventListener("DOMContentLoaded", fetchSalles);
+
+    </script>
+</body>
+</html>

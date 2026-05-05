@@ -1,0 +1,159 @@
+/* Configuration Générale */
+body {
+    background-color: #ffffff;
+    color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1100px; /* Augmenté légèrement pour laisser plus de place aux 5 profils */
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Images en Noir et Blanc */
+.bw-image {
+    transition: filter 0.4s ease;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Sections */
+h1, h2 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 2px solid #1a1a1a;
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin: 60px 0;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero-img {
+    flex: 1;
+    min-width: 300px;
+    height: 400px;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* Grilles */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Correction spécifique pour la section Équipe (5 membres sur une ligne) */
+.team .grid {
+    grid-template-columns: repeat(5, 1fr); /* Force 5 colonnes */
+}
+
+/* Cartes & Membres */
+.card, .member {
+    border: 1px solid #eeeeee;
+    padding: 15px; /* Réduit un peu le padding interne */
+    transition: background 0.3s;
+}
+
+.card:hover {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+.member img {
+    height: 200px; /* Hauteur ajustée pour le format 5 colonnes */
+    margin-bottom: 15px;
+}
+
+.member h3 {
+    margin: 10px 0 5px 0;
+    font-size: 1rem; /* Taille de police ajustée */
+}
+
+.member span {
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #666;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.member p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+/* Boutons */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    background: #1a1a1a;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    background: #444;
+}
+
+/* bouton de retour */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    padding: 10px;
+    background-color: #000;
+    -webkit-transition: color 0.3s ease;
+    -moz-transition: color 0.3s ease;
+    -ms-transition: color 0.3s ease;
+    -o-transition: color 0.3s ease;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+    width: 100px;
+}
+
+.back-link .arrow {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.back-link:hover {
+    color: #ffffff; 
+}
+
+.back-link:hover .arrow {
+    transform: translateX(-5px); 
+}
