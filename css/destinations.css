@@ -1,50 +1,43 @@
-/* Fondamentaux */
+/* Reset et Styles Globaux */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Times New Roman', serif;
+    font-family: "Times New Roman", Times, serif;
 }
 
 body {
-    background: #fff;
-    color: #000;
+    background-color: #ffffff;
+    color: #333;
     line-height: 1.6;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-/* Recherche */
-.search-bar {
-    padding: 30px 0;
+/* Header & Recherche */
+.search-container {
     display: flex;
     justify-content: center;
+    padding: 30px 0;
 }
 
 .search-form {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
+    display: flex;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 5px 15px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .search-form input {
-    width: 100%;
-    padding: 15px 25px;
-    border: 1px solid #000;
-    border-radius: 50px;
-    font-size: 1rem;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    width: 350px;
     outline: none;
+    font-size: 16px;
 }
 
 .search-form button {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
     background: #000;
     color: #fff;
     border: none;
@@ -52,84 +45,130 @@ body {
     height: 40px;
     border-radius: 50%;
     cursor: pointer;
-}
-
-/* Hero & Titres */
-h1, h2 {
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-}
-
-.region {
-    padding: 60px 0;
-    border-top: 1px solid #eee;
-}
-
-.region-intro {
-    margin-bottom: 30px;
-}
-
-.region-intro p {
-    max-width: 600px;
-    color: #666;
-}
-
-/* Système de Scroll Horizontal */
-.scroll-wrapper {
+    transition: 0.3s;
     display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding: 20px 0;
-    scrollbar-width: none; /* Cache la barre de défilement sur Firefox */
+    justify-content: center;
+    align-items: center;
 }
 
-.scroll-wrapper::-webkit-scrollbar {
-    display: none; /* Cache la barre sur Chrome/Safari */
+.search-form button:hover {
+    background: #444;
+    transform: scale(1.1);
 }
 
-/* Cartes */
-.destination-card {
+/* Sections Hero */
+.hero {
+    text-align: center;
+    padding: 40px 5%;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+/* Conteneurs de Cartes */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+/* Grandes Cartes (Haut de page) */
+.card {
     position: relative;
-    flex: 0 0 350px; /* Taille fixe pour le scroll */
+    width: 350px;
     height: 450px;
+    border-radius: 20px;
     overflow: hidden;
-    background: #000;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s;
 }
 
-.destination-card.large { height: 500px; flex: 0 0 400px; }
-.destination-card.small { height: 300px; flex: 0 0 250px; }
+.card:hover {
+    transform: translateY(-10px);
+}
 
-.destination-card img {
+.card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: 0.6s ease;
-    opacity: 0.8;
 }
 
-.destination-card:hover img {
-    transform: scale(1.05);
-    opacity: 1;
+/* Petites Cartes (Continents) */
+.continent-section {
+    padding: 60px 10%;
 }
 
-/* Overlay Texte */
-.overlay {
+.continent-header {
+    margin-bottom: 30px;
+}
+
+.continent-header h1 {
+    font-size: 2.5rem;
+    border-left: 5px solid #000;
+    padding-left: 15px;
+    margin-bottom: 10px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.small-card {
+    position: relative;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.small-card:hover {
+    transform: scale(1.03);
+}
+
+.small-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Texte sur les images (Overlay) */
+.card-text {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    padding: 30px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: #fff;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    text-align: left;
 }
 
-.overlay h3 {
+.card-text h3 {
     font-size: 1.2rem;
     margin-bottom: 5px;
 }
 
-.overlay p {
+.card-text p {
     font-size: 0.9rem;
-    opacity: 0.8;
+    opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-form input { width: 200px; }
+    .hero h1 { font-size: 2rem; }
+    .continent-section { padding: 40px 5%; }
 }
